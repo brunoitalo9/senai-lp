@@ -1,1 +1,0 @@
-alert("teste se carregou o arquivo js ok")
