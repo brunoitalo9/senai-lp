@@ -8,13 +8,53 @@
 <body>
     <h1>Lista de Exemplos e Exercícios</h1>
     <ul>
-        <li><a href="livrojs/cap01/exe1_1.html">Exemplo 1.1</a></li>
-        <li><a href="livrojs/cap01/exe1_2.html">Exemplo 1.2</a></li>
-        <li><a href="livrojs/cap01/exe1_3.html">Exemplo 1.3</a></li>
-        <li><a href="livrojs/cap01/exe1_4.html">Exemplo 1.4</a></li>
-        <li><a href="livrojs/cap01/exe1_5.html">Exemplo 1.5</a></li>
-        <li><a href="livrojs/cap01/exe1_6.html">Exemplo 1.6</a></li>
-        <li><a href="livrojs/cap01/exe1_7.html">Exemplo 1.7</a></li>
+        <script>
+            const arquivos = ["livrojs/cap01/exe1_1.html",
+                "livrojs/cap01/exe1_2.html",
+                "livrojs/cap01/exe1_3.html",
+                "livrojs/cap01/exe1_4.html",
+                "livrojs/cap01/exe1_5.html", 
+                "livrojs/cap01/exe1_6.html",
+                "livrojs/cap01/exe1_7.html",
+                "livrojs/cap01/resp1_a.html",
+                "livrojs/cap01/resp1_b.html",
+                "livrojs/cap01/resp1_c.html",
+                "livrojs/cap01/resp1_d.html",
+                "livrojs/cap02/exe2_1.html",
+                "livrojs/cap02/exe2_2.html",
+                "livrojs/cap02/exe2_3.html",
+                "livrojs/cap02/exe2_4.html",
+                "livrojs/cap02/resp2_a.html",
+                "livrojs/cap02/resp2_b.html",
+                "livrojs/cap04/exe4_1.html",
+                "livrojs/cap04/exe4_2.html",
+                "livrojs/cap04/exe4_3.html",
+                "livrojs/cap04/exe4_4.html",
+                "livrojs/cap04/exe4_5.html",
+                "livrojs/cap04/exe4_6.html",
+                "livrojs/cap04/exe4_a.html",
+                "livrojs/cap04/exe4_b.html",
+                "livrojs/cap04/exe4_c.html",
+                "livrojs/cap04/exe4_d.html"]
+            let cap= ""
+            for(let i= 0; i< arquivos.length; i++){
+                let url = arquivos[i].split("/")
+                if (cap != url[1]){
+                    cap = url[1]
+                    document.write(`<h3>${cap.replace("cap","Capitulo ")}</h3>`)
+                }
+
+                let link = arquivos[i]
+                .substring(14)
+                .replace("resp","Resposta")
+                .replace(".html","")
+                .replace("exe", "Exemplo")
+                .replace("_",".")
+                document.write(`<li><a href="${arquivos[i]}">${link}</a></li>`)
+            }
+
+        </script>
     </ul>
 </body>
+
 </html>
