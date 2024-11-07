@@ -9,9 +9,9 @@
       <ExibirLog Valor="False"/>
     </Configuracoes>
     <Arquivos>
-      <Arq01 Valor="C:\USERS\EAD\DOCUMENTS\ITALO\SENAI-LP\BD\CONCEITUAL_1 ATIVIDADE_FUTEBOL.BRM"/>
-      <Arq02 Valor="C:\USERS\EAD\DOCUMENTS\ITALO\SENAI-LP\BD\EXEMPLO-DERML-02.BRM"/>
-      <Arq03 Valor=""/>
+      <Arq01 Valor="C:\USERS\EAD\DOCUMENTS\ITALO\SENAI-LP\BD\LOGICO_1 ATIVIDADE _FUTEBOL.BRM"/>
+      <Arq02 Valor="C:\USERS\EAD\DOCUMENTS\ITALO\SENAI-LP\BD\CONCEITUAL_1 ATIVIDADE_FUTEBOL.BRM"/>
+      <Arq03 Valor="C:\USERS\EAD\DOCUMENTS\ITALO\SENAI-LP\BD\EXEMPLO-DERML-02.BRM"/>
       <Arq04 Valor=""/>
       <Arq05 Valor=""/>
     </Arquivos>

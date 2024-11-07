@@ -16,3 +16,7 @@ create table id_estadio
      show tables; --mostra as tabelas de uma base de dados 
 
      desc estadio; --descreve a estrutura de uma tabela 
+     desc time  ;
+     desc partida;
+     desc jogador;
+     desc evento;
