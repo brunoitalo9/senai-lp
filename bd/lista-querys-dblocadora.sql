@@ -126,24 +126,56 @@ group by c.nome, f.classificacao
 order by classificacao;
 
 /*28. Qual a quantidade de filmes por Ator ordenando decrescente por quantidade?*/
-select fa.ator_id,count(*) qt_filmes from filme f inner join filme_ator fa 
-on f.filme_id = fa.filme_id
-group by fa.ator_id
-order by count(*) desc; 
+select primeiro_nome, ultimo_nome, count(*) qt_filme from ator a
+inner join filme_ator fa 
+on a.ator_id = fa.ator_id
+group by primeiro_nome, ultimo_nome
+order by qt_filme desc;
 
 /*29. Qual a quantidade de filmes por ano de lançamento ordenando por quantidade crescente?*/
+select count(*) qt_filmes, ano_de_lancamento from filme
+group by ano_de_lancamento
+order by qt_filmes; 
 
 /*30. Listar os anos de lançamento que possuem mais de 400 filmes?*/
+select count(*) qt_filmes, ano_de_lancamento from filme
+group by ano_de_lancamento
+having count(*) > 400; 
 
 /*31. Listar os anos de lançamento dos filmes que possuem mais de 100 filmes com preço da locação maior que a média do preço da locação dos filmes da categoria "Children"?*/
+select ano_de_lancamento, count(*) from filme where preco_da_locacao >(select avg(preco_da_locacao) from filme f
+inner join filme_categoria fc
+on f.filme_id = fc.filme_id
+inner join categoria c
+on fc.categoria_id=c.categoria_id  where c.nome ='children')
+group by ano_de_lancamento
+having count(*) > 100;
 
 /*32. Quais as cidades e seu pais correspondente que pertencem a um país que inicie com a Letra “E”?*/
+select cidade, pais from cidade c inner join pais p
+on c.pais_id = p.pais_id where pais like  'E%'
+group by cidade, pais;
 
 /*33. Qual a quantidade de cidades por pais em ordem decrescente?*/
+select pais, count(*) qt_cidade  from pais p inner join cidade c
+on c.pais_id = p.pais_id
+group by pais
+order by qt_cidade desc; 
+
 
 /*34. Qual a quantidade de cidades que iniciam com a Letra “A” por pais em ordem crescente?*/
+ select pais, count(*) from pais p inner join cidade c
+ on c.pais_id = p.pais_id
+ where cidade like 'A%'
+ group by pais
+ order by count(*) asc;
 
 /*35. Quais os países que possuem mais de 3 cidades que iniciam com a Letra “A”?*/
+select pais, count(*) from cidade c inner join pais p 
+on p.pais_id = c.pais_id
+where cidade like 'a'
+group by pais
+having count(*)> 3;
 
 /*36. Quais os países que possuem mais de 3 cidades que iniciam com a Letra “A” ou tenha "R" ordenando por quantidade crescente?*/
 
