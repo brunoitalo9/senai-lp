@@ -171,13 +171,21 @@ order by qt_cidade desc;
  order by count(*) asc;
 
 /*35. Quais os países que possuem mais de 3 cidades que iniciam com a Letra “A”?*/
-select pais, count(*) from cidade c inner join pais p 
+select p.pais, count(*) from pais p inner join cidade c 
 on p.pais_id = c.pais_id
-where cidade like 'a'
+where cidade like 'a%'
 group by pais
-having count(*)> 3;
+having count(*)> 3
+order by count(*) desc;
 
 /*36. Quais os países que possuem mais de 3 cidades que iniciam com a Letra “A” ou tenha "R" ordenando por quantidade crescente?*/
+select p.pais, count(*) from pais p inner join cidade c 
+on p.pais_id = c.pais_id
+where cidade like 'a%' or cidade like '%r%' 
+group by pais
+having count(*)> 3
+order by count(*) asc;
+
 
 /*37. Quais os clientes moram no país “United States”?*/
 
@@ -188,6 +196,9 @@ having count(*)> 3;
 /*40. Quais países possuem mais de 10 clientes?*/
 
 /*41. Qual a média de duração dos filmes por idioma?*/
+select avg(duracao_do_filme), nome  from filme f inner join idioma i
+on f.idioma_id = i.idioma_id
+group by nome; 
 
 /*42. Qual a quantidade de atores que atuaram nos filmes do idioma “English”?*/
 
@@ -197,11 +208,37 @@ having count(*)> 3;
 
 /*45. Quais os filmes alugados (sem repetição) para clientes que moram na “Argentina”?*/
 
+select distinct f.titulo from pais p
+inner join cidade c on p.pais_id = c.pais_id
+inner join endereco e on c.cidade_id = e.cidade_id
+inner join cliente cl on cl.endereco_id = e.endereco_id
+inner join aluguel a on a.cliente_id = cl.cliente_id
+inner join inventario i on i.inventario_id = a.inventario_id
+inner join filme f on f.filme_id =i.inventario_id
+where pais = 'Argentina ' 
+group by f.titulo;
+
 /*46. Qual a quantidade de filmes alugados por Clientes que moram na “Chile”?*/
+select distinct f.titulo from pais p
+inner join cidade c on p.pais_id = c.pais_id
+inner join endereco e on c.cidade_id = e.cidade_id
+inner join cliente cl on cl.endereco_id = e.endereco_id
+inner join aluguel a on a.cliente_id = cl.cliente_id
+inner join inventario i on i.inventario_id = a.inventario_id
+inner join filme f on f.filme_id =i.inventario_id
+where pais = 'Chile ' 
+group by f.titulo;
+
 
 /*47. Qual a quantidade de filmes alugados por funcionario?*/
+select fun.primeiro_nome, fun.ultimo_nome, count(*) from funcionario fun 
+inner join aluguel a on fun.funcionario_id = a.funcionario_id
+inner join inventario i on i.inventario_id = a.inventario_id
+group by fun.primeiro_nome, fun.ultimo_nome;
 
+ 
 /*48. Qual a quantidade de filmes alugados por funcionario para cada categoria?*/
+
 
 /*49. Quais Filmes possuem preço da Locação maior que a média de preço da locação?*/
 
