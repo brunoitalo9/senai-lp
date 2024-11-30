@@ -325,14 +325,13 @@ group by  mes ,ano;
 
 
 /*54. Qual o total pago por filme alugado no mês de Junho de 2006 por cliente? -----    CORRIGIR  */
-select concat_ws(' ',c.primeiro nome, c.ultimo_nome) nome_completo,
- f.titulo ,
- substring(data_de_aluguel, 6,2) mes,
+select  f.titulo,
+concat_ws(' ',c.primeiro_nome, c.ultimo_nome) nome_completo,
  sum(valor) valor_total
 from pagamento p 
 inner join cliente c on c.cliente_id = p.cliente_id
-inner join aluguel a on a.clinete_id = c.cliente_id
+inner join aluguel a on a.cliente_id = c.cliente_id
 inner join inventario i on a.inventario_id = i.inventario_id
 inner join filme f on i.filme_id = f.filme_id
-where substring(data_de_aluguel, 6,2 ) = '06'
-group by nome_completo, f.titulo,mes;
+where data_de_aluguel like '2005-06%'
+group by nome_completo, f.titulo;
