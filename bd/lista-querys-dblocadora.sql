@@ -296,6 +296,11 @@ where(select avg(preco_da_locacao) from filme);
 
 /*50. Qual a soma da duração dos Filmes por categoria?*/
 
+select sum(duracao_do_filme), c.nome from categoria c 
+inner join filme_categoria fc on c.categoria_id = fc.categoria_id
+inner join filme f on f.filme_id = fc.filme_id
+group by c.nome;
+
 
 /*51. Qual a quantidade de filmes locados mês a mês por ano? */
 
