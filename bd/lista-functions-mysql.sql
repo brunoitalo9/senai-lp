@@ -96,6 +96,8 @@ select pow(8,3);
 
 -- RAND(): Retorna um número aleatório.
 select rand();
+select floor(rand()* 5); -- aleatorio de 0 a 10, no exemplo 11 é a quantidade de digitos 
+select floor(rand()* 5)+5; -- aleatorio de 5 ate 15, no exemplo 11 é a quantidade de digitos e 5 é onde inicia 
 
 -- ROUND(): Arredonda um número.
 select round(2.5), round(2.4);
@@ -123,6 +125,12 @@ select curtime();
 -- DATEDIFF(): Retorna a diferença em dias entre duas datas.
 select datediff('2024-12-31','2024-12-20') ;
 
+-- dias vividos 
+select datediff(curdate(),'1999-11-12'); -- eu 
+select datediff(curdate(),'2005-11-06');  -- coracao
+select datediff(curdate(),'1973-11-22'); -- mae
+select datediff(curdate(),'1974-11-19'); -- pai
+
 -- DATE_FORMAT(): Formata uma data para um formato especificado.
 select date_format(curdate());
 
@@ -145,13 +153,23 @@ select extract(day from curdate()),
 select from_days(366), from_days(367);
 
 -- HOUR(), MINUTE(), SECOND(): Extrai partes da hora.
-select hour(curdate()), minute(curdate()), second(curdate()); 
+select hour(now()), minute(now()), second(now()); 
 
 -- LAST_DAY(): Retorna o último dia do mês.
+select last_day(curdate());
+
 -- MAKEDATE(): Cria uma data com base no ano e dia do ano.
+select makedate(2024, 257);
+
 -- MAKETIME(): Cria um tempo com base em hora, minuto e segundo.
+select maketime(22,1,1);
+
 -- NOW(): Retorna a data e hora atual.
+select now();
+
 -- STR_TO_DATE(): Converte uma string em data.
+
+
 -- TIMESTAMP(): Retorna data e hora combinadas.
 -- WEEK(), WEEKDAY(), WEEKOFYEAR(): Funções de semana.
 
