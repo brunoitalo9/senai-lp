@@ -72,3 +72,12 @@ from (select * from vw_mandante
 	  select * from vw_visitante) as tb
 group by sigla);
 select row_number() over() N, c.* from classificacao as c order by pontos desc, V desc, SG desc;
+
+
+
+
+
+
+
+
+
